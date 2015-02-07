@@ -1,0 +1,28 @@
+<li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(slide) -%>">
+  <span class='thumbnail'>
+    <%= image_fu slide.image, '100x50#', :style => 'margin-bottom: -10px;' if slide.image %>
+  </span>
+  <span class='title'>
+    <strong><%= slide.title %></strong> <%= "&rarr; ".html_safe + link_to(truncate(slide.link), slide.link) if slide.link.present? %>
+  </span>
+  <% if slide.live? -%>
+    <% if slide.down_at.present? -%>
+      <span class='label'>Down at <%= slide.down_at.strftime("%b %-d %-l:%M %p") %></span>
+    <% else -%>
+      <span class='label'>Live</span>
+    <% end -%>
+  <% elsif slide.upcoming? -%>
+      <span class='label'>Live at <%= slide.live_at.try(:strftime, "%b %-d %-l:%M %p") %></span>
+  <% elsif slide.hidden? -%>
+    <span class='hidden'><em>Hidden</em></span>
+  <% end -%>
+  <span class='actions'>
+    <%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_slides_admin_slide_path(slide),
+         :title => t('.edit') %>
+    <%= link_to refinery_icon_tag("delete.png"), refinery.slides_admin_slide_path(slide),
+        :class => "cancel confirm-delete",
+        :title => t('.delete'),
+        :confirm => t('message', :scope => 'refinery.admin.delete', :title => slide.title),
+        :method => :delete %>
+  </span>
+</li>

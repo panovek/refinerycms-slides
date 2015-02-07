@@ -1,0 +1,25 @@
+<ul>
+  <% if ::Refinery::Slides::Admin::SlidesController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.slides_admin_slides_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to t('.create_new'), refinery.new_slides_admin_slide_path,
+                 :class => "add_icon" %>
+  </li>
+<% if !searching? && ::Refinery::Slides::Admin::SlidesController.sortable? && ::Refinery::Slides::Slide.any? %>
+  <li>
+    <%= link_to t('.reorder', :what => "Slides"),
+                 refinery.slides_admin_slides_path,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_done', :what => "Slides"),
+                 refinery.slides_admin_slides_path,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>

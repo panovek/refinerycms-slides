@@ -1,0 +1,32 @@
+es:
+  refinery:
+    plugins:
+      slides:
+        title: Slides
+#        article: masculino/femenino
+    slides:
+      admin:
+        slides:
+          actions:
+            create_new: Crear nuevo slide
+            reorder: Reordenar slides
+            reorder_done: Reordenación de slides completada
+          records:
+            title: Slides
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay slides todavía. Pulsa en "Crear nuevo Slide" para crear tu primer slide.
+          slide:
+            view_live_html: Ver este slide como abierto al público <br/><em>(abre en ventana nueva)</em>
+            edit: Editar este slide
+            delete: Borrar este slide para siempre
+      slides:
+        show:
+          other: Otros slides
+  activerecord:
+    attributes:
+      'refinery/slides/slide':
+        title: Title
+        link: Link
+        image: Image
+        content: Content
+        hidden: Hidden

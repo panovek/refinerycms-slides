@@ -1,0 +1,40 @@
+ru:
+  refinery:
+    plugins:
+      slides:
+        title: Слайды
+    slides:
+      admin:
+        slides:
+          actions:
+            create_new: Добавить новый слайд
+            reorder: Сортировать слайды
+            reorder_done: Закончить сортировку
+          records:
+            title: Слайды
+            sorry_no_results: Ничего не найдено
+            no_items_yet: Пока нет слайдов. Создайте новый, кликнув по ссылке "Добавить новый слайд"
+          slide:
+            view_live_html: Посмотреть слайд на сайте <br/><em>(в новом окне)</em>
+            edit: Редактировать этот слайд
+            delete: Удалить этот слайд
+            live: Активен
+            down_at: "Истекает: %{date}"
+            live_at: "Начало показа: %{date}"
+            hidden: Скрытый
+      slides:
+        show:
+          other: Другие слайды
+  activerecord:
+    attributes:
+      'refinery/slides/slide':
+        title: Название
+        link: Ссылка
+        image: Изображение
+        content: Текст слайда
+        live_at: Дата начала показа
+        down_at: Дата окончания показа
+        hidden: Скрыть из показа
+  time:
+    formats:
+      slides_short: "%d %B %H:%M %Y"

@@ -5,6 +5,16 @@ module Refinery
 
         crudify :'refinery/slides/slide', :xhr_paging => true
 
+        # override because acts_as_indexed dont work with utf8
+        def index
+          if params[:search].present?
+            @slides = Slide.where('LOWER(title) ILIKE ?', "%#{params[:search].downcase}%")
+          else
+            @slides = Slide.all
+          end
+          @slides = @slides.order('created_at desc').paginate(:page => params[:page])
+        end
+
         protected
 
         def slide_params

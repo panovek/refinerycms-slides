@@ -7,14 +7,14 @@
   </span>
   <% if slide.live? -%>
     <% if slide.down_at.present? -%>
-      <span class='label'>Down at <%= slide.down_at.strftime("%b %-d %-l:%M %p") %></span>
+      <span class='label'><%= t('.down_at', date: l(slide.down_at, format: :slides_short)) %></span>
     <% else -%>
-      <span class='label'>Live</span>
+      <span class='label'><%= t('.live') %></span>
     <% end -%>
   <% elsif slide.upcoming? -%>
-      <span class='label'>Live at <%= slide.live_at.try(:strftime, "%b %-d %-l:%M %p") %></span>
+      <span class='label'><%= t('.live_at', date: l(slide.live_at, format: :slides_short)) %></span>
   <% elsif slide.hidden? -%>
-    <span class='hidden'><em>Hidden</em></span>
+    <span class='label'><em><%= t('.hidden') %></em></span>
   <% end -%>
   <span class='actions'>
     <%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_slides_admin_slide_path(slide),

@@ -53,11 +53,11 @@
     <%= f.datetime_select :down_at, :include_blank => true, :ampm => true %>
   </div>
 
-  <div class='field'>
-    <%= f.label :hidden -%>
-    <%= f.check_box :hidden, :checked => @slide[:hidden]  -%>
-
-  </div>
+    </br>
+    <div class='field'>
+      <%= f.check_box :hidden, :checked => @slide.new_record? ? true : @slide[:hidden] %>
+      <%= f.label :hidden, :class => 'input_label' %>
+    </div>
 
   <%= render '/refinery/admin/form_actions', :f => f,
              :continue_editing => true,
